@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title><%= title %></title></head>
+<body>
+  <p><a href="/employees">Back</a></p>
+  <h2><%= title %></h2>
+  <% if (typeof error != 'undefined') { %><p style="color:red"><%= error %></p><% } %>
+  <form action="<%= action %>" method="POST">
+    <p>Name: <input type="text" name="name" value="<%= emp.name || '' %>" required></p>
+    <p>Email: <input type="email" name="email" value="<%= emp.email || '' %>" required></p>
+    <p>Department: <input type="text" name="department" value="<%= emp.department || '' %>"></p>
+    <p>Designation: <input type="text" name="designation" value="<%= emp.designation || '' %>"></p>
+    <p>Basic Salary: <input type="number" name="basicSalary" value="<%= emp.basicSalary || '' %>" required></p>
+    <p><small>Emp ID and password are generated automatically and mailed to the employee.</small></p>
+    <button type="submit">Save</button>
+  </form>
+</body>
+</html>

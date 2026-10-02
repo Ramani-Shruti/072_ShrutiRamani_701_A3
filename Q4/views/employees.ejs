@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head><title>Employees</title></head>
+<body>
+  <p>Logged in as <b><%= admin %></b> | <a href="/logout">Logout</a></p>
+  <h2>Employees</h2>
+  <% if (msg) { %><p style="color:green"><%= msg %></p><% } %>
+  <p><a href="/employees/add">+ Add Employee</a></p>
+
+  <table border="1" cellpadding="6">
+    <tr>
+      <th>Emp ID</th><th>Name</th><th>Email</th><th>Department</th><th>Designation</th>
+      <th>Basic</th><th>HRA (20%)</th><th>DA (10%)</th><th>PF (12%)</th><th>Gross</th><th>Net</th><th>Action</th>
+    </tr>
+    <% employees.forEach(function(e) { %>
+      <tr>
+        <td><%= e.empId %></td>
+        <td><%= e.name %></td>
+        <td><%= e.email %></td>
+        <td><%= e.department %></td>
+        <td><%= e.designation %></td>
+        <td><%= e.basicSalary %></td>
+        <td><%= e.hra %></td>
+        <td><%= e.da %></td>
+        <td><%= e.pf %></td>
+        <td><%= e.grossSalary %></td>
+        <td><%= e.netSalary %></td>
+        <td>
+          <a href="/employees/edit/<%= e._id %>">Edit</a> |
+          <a href="/employees/delete/<%= e._id %>" onclick="return confirm('Delete this employee?')">Delete</a>
+        </td>
+      </tr>
+    <% }) %>
+    <% if (employees.length == 0) { %>
+      <tr><td colspan="12">No employees yet</td></tr>
+    <% } %>
+  </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Registration Details</title>
+</head>
+<body>
+  <h2>Registration Successful</h2>
+  <table border="1" cellpadding="8">
+    <tr><th>Username</th><td><%= user.username %></td></tr>
+    <tr><th>Email</th><td><%= user.email %></td></tr>
+    <tr><th>Gender</th><td><%= user.gender %></td></tr>
+    <tr><th>Hobbies</th><td><%= user.hobbies.join(", ") %></td></tr>
+    <tr>
+      <th>Profile Pic</th>
+      <td>
+        <img src="/uploads/<%= user.profilePic %>" width="120"><br>
+        <a href="/download/<%= user.profilePic %>">Download</a>
+      </td>
+    </tr>
+    <tr>
+      <th>Other Pics</th>
+      <td>
+        <% user.otherPics.forEach(function(p) { %>
+          <div style="display:inline-block; margin:5px">
+            <img src="/uploads/<%= p %>" width="100"><br>
+            <a href="/download/<%= p %>">Download</a>
+          </div>
+        <% }) %>
+      </td>
+    </tr>
+  </table>
+  <p><a href="/">Register another user</a></p>
+</body>
+</html>
